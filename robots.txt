@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://tobarcarrascom-wq.github.io/Saboria/sitemap.xml

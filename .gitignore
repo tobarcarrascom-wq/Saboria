@@ -1,0 +1,7 @@
+# Respaldos locales: se conservan fuera de la publicación.
+backup-*/
+CocinaClick-legacy/
+
+# Archivos locales de herramientas.
+.DS_Store
+Thumbs.db
