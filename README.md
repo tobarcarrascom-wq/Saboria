@@ -6,11 +6,12 @@ Saboria es una experiencia estática de recetas para descubrir qué cocinar con 
 
 ## Incluido en esta etapa
 
-- 50 recetas originales con ingredientes, cantidades base, tiempos, dificultad, porciones, pasos, consejos y sustituciones.
+- 60 recetas con ingredientes, cantidades base, tiempos, dificultad, porciones, pasos, consejos y sustituciones.
 - Herramienta gratuita “¿Qué cocino con lo que tengo?” con coincidencias y recetas preparables.
-- Chef Saboria IA local basado en reglas: no se presenta como IA generativa ni transmite datos.
+- Chef Saboria IA local basado en coincidencias ponderadas y sinónimos en español: no se presenta como IA generativa ni transmite datos.
 - Búsqueda, filtros, favoritos, lista de compras local, compartir y ajuste de porciones.
 - Modo oscuro, responsive, accesible, SEO básico, páginas de privacidad/contacto y sitemap.
+- Modo cocinar paso a paso con progreso, arte SVG original por receta y enlaces compartibles con hash.
 - Saboria PRO como propuesta de producto; el precio de $2.990 CLP/mes es referencial y no hay cobros activos.
 
 ## Desarrollo posterior seguro
@@ -30,3 +31,9 @@ Abre `index.html` o sirve esta carpeta con cualquier servidor estático.
 ## Copia anterior
 
 La versión previa de CocinaClick está conservada en `backup-cocinaclick-2026-10-12/`.
+
+## Documentación de producto
+
+- `ARCHITECTURE.md`: diseño futuro de cuentas, Chef generativo y pagos seguros.
+- `ANALYTICS.md`: propuesta de métricas agregadas y respetuosas con la privacidad.
+- `marketing/content-plan.md`: guiones, ideas de video y enlaces UTM de ejemplo.

@@ -1,16 +1,18 @@
-const photoByCategory = {
-  'Comida chilena': 'https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=900&q=82',
-  'Económicas': 'https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&w=900&q=82',
-  'Rápidas': 'https://images.unsplash.com/photo-1552332386-f8dd00dc2e85?auto=format&fit=crop&w=900&q=82',
-  'Desayunos': 'https://images.unsplash.com/photo-1533089860892-a7c6f0a88666?auto=format&fit=crop&w=900&q=82',
-  'Almuerzos': 'https://images.unsplash.com/photo-1532550907401-a500c9a57435?auto=format&fit=crop&w=900&q=82',
-  'Cenas': 'https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=900&q=82',
-  'Postres': 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=900&q=82',
-  'Vegetarianas': 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=900&q=82',
-  'Proteicas': 'https://images.unsplash.com/photo-1532550907401-a500c9a57435?auto=format&fit=crop&w=900&q=82',
-  'Equilibradas': 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=900&q=82',
-  'Estudiantes': 'https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&w=900&q=82'
+const artPalette = {
+  'Comida chilena': ['#dceee8', '#143e36'], 'Económicas': ['#f6c45f', '#143e36'],
+  'Rápidas': ['#ffe0d7', '#7c3429'], 'Desayunos': ['#fff0bd', '#665019'],
+  'Almuerzos': ['#e2eee7', '#285949'], 'Cenas': ['#d9e6e2', '#173f37'],
+  'Postres': ['#f5d6d0', '#713a3a'], 'Vegetarianas': ['#d7ead4', '#315b2e'],
+  'Proteicas': ['#dce4ef', '#27466c'], 'Equilibradas': ['#e1eee7', '#26574e'],
+  'Estudiantes': ['#eee5d7', '#594633']
 };
+
+function recipeArt(title, category, emoji) {
+  const [background, ink] = artPalette[category] || ['#dceee8', '#143e36'];
+  const safeTitle = title.replace(/[&<>"']/g, character => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[character]));
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 620"><rect width="900" height="620" fill="${background}"/><circle cx="760" cy="-30" r="230" fill="${ink}" opacity=".12"/><circle cx="115" cy="535" r="190" fill="#ef765f" opacity=".18"/><text x="90" y="250" font-size="150">${emoji}</text><text x="90" y="400" font-family="Georgia,serif" font-size="48" font-weight="700" fill="${ink}">${safeTitle.slice(0, 24)}</text><text x="90" y="470" font-family="Arial,sans-serif" font-size="22" letter-spacing="4" fill="${ink}" opacity=".75">${category.toUpperCase()}</text><path d="M700 480c40-50 90-50 130 0" fill="none" stroke="${ink}" stroke-width="8" stroke-linecap="round" opacity=".45"/></svg>`;
+  return `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(svg)}`;
+}
 
 const recipeSpecs = [
   ['Pastel de choclo de olla','Comida chilena','🌽','60 min','Media',4,'pollo;choclo;cebolla;huevo','Dorar la cebolla y el pollo; cubrir con choclo molido y hornear hasta gratinar.','Usa choclo congelado bien escurrido.','Pollo por lentejas cocidas; azúcar por miel.'],
@@ -23,6 +25,7 @@ const recipeSpecs = [
   ['Papas rellenas de pino','Comida chilena','🥔','65 min','Media',6,'papa;carne;cebolla;huevo','Formar un puré firme; rellenar con pino y dorar en horno o sartén.','Enfría el puré para que sea fácil de moldear.','Carne por lentejas; harina por maicena.'],
   ['Lentejas con zapallo','Económicas','🥣','40 min','Fácil',4,'lentejas;zapallo;zanahoria;arroz','Cocer las lentejas con verduras; agregar arroz y terminar con comino.','Remojar reduce el tiempo de cocción de las lentejas secas.','Arroz por papa; zapallo por camote.'],
   ['Arroz salteado de despensa','Económicas','🍚','20 min','Fácil',2,'arroz;huevo;zanahoria;cebollín','Saltear las verduras; incorporar arroz frío y huevo hasta cuajar.','El arroz del día anterior queda más suelto.','Huevo por tofu; cebollín por cebolla.'],
+  ['Arroz con tomate y huevo','Rápidas','🍅','20 min','Fácil',2,'arroz;tomate;huevo;cebolla','Calentar el arroz; preparar un sofrito breve de tomate y cebolla y terminar con huevo revuelto.','Usa arroz cocido frío para que no se vuelva pastoso.','Huevo por tofu; tomate por pimentón asado.'],
   ['Fideos con salsa de atún','Económicas','🍝','20 min','Fácil',2,'pasta;atún;tomate;ajo','Cocer la pasta; reducir la salsa de tomate con ajo y mezclar con atún.','Reserva agua de cocción para ligar la salsa.','Atún por garbanzos; pasta por arroz.'],
   ['Tortilla de papas sencilla','Económicas','🍳','35 min','Fácil',3,'papa;huevo;cebolla','Cocinar las papas; mezclar con huevo y cuajar a fuego bajo por ambos lados.','Usa una sartén antiadherente y paciencia al voltear.','Papa por zapallo; cebolla por puerro.'],
   ['Guiso de garbanzos','Económicas','🍛','35 min','Fácil',4,'garbanzos;tomate;cebolla;espinaca','Sofreír la base; sumar garbanzos y tomate y terminar con espinaca.','Un toque de pimentón ahumado intensifica el sabor.','Garbanzos por porotos; espinaca por acelga.'],
@@ -77,7 +80,7 @@ const recipeSpecs = [
 function buildRecipe(spec, index) {
   const [title, category, emoji, time, difficulty, servings, ingredientText, method, tip, substitutions] = spec;
   const ingredients = ingredientText.split(';').map((name, i) => ({name, quantity: `${i === 0 ? 1 : i === 1 ? 2 : i + 1} ${name === 'huevo' ? 'unidades' : 'porciones'}`}));
-  return { id: `saboria-${index + 1}`, title, category, emoji, time, difficulty, servings, ingredients, method, tip, substitutions, steps: [`Prepara y mide todos los ingredientes. Lava las verduras y deja el área de trabajo despejada.`, method, `Prueba y ajusta sal, acidez o especias. Sirve caliente o deja enfriar según corresponda.`, `Guarda las sobras refrigeradas en un recipiente limpio y consúmelas dentro de 2 días.`], photo: photoByCategory[category] || photoByCategory['Equilibradas'], tags: [category, ...ingredientText.split(';')]};
+  return { id: `saboria-${index + 1}`, title, category, emoji, time, difficulty, servings, ingredients, method, tip, substitutions, steps: [`Prepara y mide todos los ingredientes. Lava las verduras y deja el área de trabajo despejada.`, method, `Prueba y ajusta sal, acidez o especias. Sirve caliente o deja enfriar según corresponda.`, `Guarda las sobras refrigeradas en un recipiente limpio y consúmelas dentro de 2 días.`], photo: recipeArt(title, category, emoji), tags: [category, ...ingredientText.split(';')]};
 }
 
 const recipes = recipeSpecs.map(buildRecipe);
