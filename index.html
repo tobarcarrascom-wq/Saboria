@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="CocinaClick: encuentra recetas simples, filtra por ingredientes y cocina a tu medida." />
+    <title>CocinaClick · Recetas a tu medida</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#inicio" aria-label="CocinaClick, inicio"><span class="brand-mark">✦</span><span>Cocina<span>Click</span></span></a>
+      <nav class="nav-links" aria-label="Navegación principal">
+        <a href="#recetas">Recetas</a>
+        <a href="#como-funciona">Cómo funciona</a>
+        <button class="favorites-link" id="favoritesToggle" type="button">♡ Mis favoritas <span id="favoriteCount">0</span></button>
+      </nav>
+      <button class="menu-button" id="menuButton" type="button" aria-label="Abrir menú" aria-expanded="false">☰</button>
+    </header>
+
+    <main id="inicio">
+      <section class="hero container">
+        <div class="hero-copy">
+          <p class="eyebrow">Cocina sin complicaciones</p>
+          <h1>Hoy cocinas<br /><em>algo increíble.</em></h1>
+          <p class="hero-text">Recetas honestas, ingredientes cotidianos y todo lo que necesitas para disfrutar cocinando.</p>
+          <a class="button button-primary" href="#recetas">Explorar recetas <span>→</span></a>
+        </div>
+        <div class="hero-art" aria-label="Ilustración decorativa de ingredientes frescos" role="img">
+          <div class="sun"></div><div class="leaf leaf-one">✦</div><div class="leaf leaf-two">✦</div>
+          <div class="plate"><span>🍝</span></div><div class="herb herb-one">🌿</div><div class="herb herb-two">🌿</div>
+          <div class="tomato tomato-one">🍅</div><div class="tomato tomato-two">🍅</div>
+        </div>
+      </section>
+
+      <section class="recipe-section container" id="recetas">
+        <div class="section-heading">
+          <div><p class="eyebrow">Inspiración para hoy</p><h2>Recetas que te van a encantar</h2></div>
+          <p class="result-count" id="resultCount"></p>
+        </div>
+        <div class="toolbar">
+          <label class="search-box"><span>⌕</span><input id="searchInput" type="search" placeholder="Busca una receta..." aria-label="Buscar recetas" /></label>
+          <div class="filter-scroll" id="categoryFilters" aria-label="Filtrar por categoría">
+            <button class="filter-chip active" data-category="Todas" type="button">Todas</button>
+            <button class="filter-chip" data-category="Rápidas" type="button">⚡ Rápidas</button>
+            <button class="filter-chip" data-category="Vegetarianas" type="button">🌱 Vegetarianas</button>
+            <button class="filter-chip" data-category="Favoritas" type="button">♡ Favoritas</button>
+          </div>
+        </div>
+        <div class="ingredient-filter">
+          <span class="filter-label">Tengo en casa:</span>
+          <div id="ingredientFilters" class="ingredient-chips"></div>
+        </div>
+        <div class="recipe-grid" id="recipeGrid"></div>
+        <div class="empty-state hidden" id="emptyState"><span>🥣</span><h3>No encontramos esa receta</h3><p>Prueba quitando algún filtro o buscando otro ingrediente.</p><button class="button button-secondary" id="clearFilters" type="button">Limpiar filtros</button></div>
+      </section>
+
+      <section class="how-section" id="como-funciona"><div class="container"><div class="section-heading"><div><p class="eyebrow">Tu cocina, tus reglas</p><h2>Más fácil que pedir delivery</h2></div></div><div class="steps"><article><span>01</span><h3>Elige tus ingredientes</h3><p>Cuéntanos qué tienes y encontraremos ideas para aprovecharlo.</p></article><article><span>02</span><h3>Ajusta a tu mesa</h3><p>Cambia las porciones y la receta recalculará las cantidades.</p></article><article><span>03</span><h3>Disfruta el resultado</h3><p>Guarda tus favoritas y vuelve a ellas cuando quieras.</p></article></div></div></section>
+    </main>
+
+    <dialog class="recipe-dialog" id="recipeDialog"><button class="dialog-close" id="dialogClose" aria-label="Cerrar">×</button><div id="dialogContent"></div></dialog>
+    <footer class="site-footer"><div class="container"><a class="brand" href="#inicio"><span class="brand-mark">✦</span><span>Cocina<span>Click</span></span></a><p>Recetas para la vida real.</p><small>Hecho con cariño · 2026</small></div></footer>
+    <script src="app.js"></script>
+  </body>
+</html>
